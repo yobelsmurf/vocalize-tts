@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocalize - Premium Text to Speech</title>
+    <meta name="description" content="A premium, unlimited Text to Speech converter supporting Indonesian and English.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-wave-square"></i>
+                <h1>Vocalize</h1>
+            </div>
+            <p class="subtitle">Convert your text to natural-sounding speech instantly.</p>
+        </header>
+
+        <main class="glass-panel">
+            <div class="input-group">
+                <label for="text-input">Enter Text</label>
+                <textarea id="text-input" placeholder="Type or paste something here... (e.g., Halo, apa kabar? / Hello, how are you?)"></textarea>
+                <div class="char-count"><span id="count">0</span> chars</div>
+            </div>
+
+            <div class="controls-row">
+                <div class="control-group" style="grid-column: 1 / -1;">
+                    <label for="premium-voice-select">Voice Selection (Premium Neural)</label>
+                    <div class="select-wrapper">
+                        <select id="premium-voice-select">
+                            <option value="id-ID-ArdiNeural">Indonesian - Ardi (Cowok)</option>
+                            <option value="id-ID-GadisNeural">Indonesian - Gadis (Cewek)</option>
+                            <option value="en-US-ChristopherNeural">English US - Christopher (Cowok)</option>
+                            <option value="en-US-AriaNeural">English US - Aria (Cewek)</option>
+                            <option value="en-US-GuyNeural">English US - Guy (Cowok)</option>
+                            <option value="en-US-JennyNeural">English US - Jenny (Cewek)</option>
+                            <option value="en-GB-RyanNeural">English UK - Ryan (Cowok)</option>
+                            <option value="en-GB-SoniaNeural">English UK - Sonia (Cewek)</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down select-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sliders-row">
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <label for="rate-slider">Speed</label>
+                        <span id="rate-value" class="slider-value">1.0x</span>
+                    </div>
+                    <input type="range" id="rate-slider" min="0.5" max="2" value="1" step="0.1">
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <label for="pitch-slider">Pitch</label>
+                        <span id="pitch-value" class="slider-value">1.0</span>
+                    </div>
+                    <input type="range" id="pitch-slider" min="0" max="2" value="1" step="0.1">
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="play-btn" class="btn btn-primary">
+                    <i class="fa-solid fa-play"></i> Listen
+                </button>
+                <button id="stop-btn" class="btn btn-secondary">
+                    <i class="fa-solid fa-stop"></i> Stop
+                </button>
+                <button id="download-mp3-btn" class="btn btn-accent" title="Download MP3">
+                    <i class="fa-solid fa-download"></i> MP3
+                </button>
+                <button id="download-wav-btn" class="btn btn-accent" title="Download WAV" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9); box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);">
+                    <i class="fa-solid fa-file-audio"></i> WAV
+                </button>
+            </div>
+            
+            <div id="status-message" class="status-message"></div>
+            
+            <audio id="audio-player" style="display: none;"></audio>
+        </main>
+        
+        <section class="history-panel glass-panel" style="margin-top: 2rem;">
+            <div class="history-header">
+                <h2><i class="fa-solid fa-clock-rotate-left"></i> History</h2>
+                <button id="clear-history-btn" class="btn btn-secondary" style="flex: 0 0 auto; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 6px; min-width: auto; height: auto;">Clear All</button>
+            </div>
+            <ul id="history-list" class="history-list">
+                <!-- History items will be populated here -->
+                <li class="history-empty">No history yet. Convert some text to see it here!</li>
+            </ul>
+        </section>
+        
+        <footer>
+            <p>Listen: Unlimited (Web Speech) • Download: High Quality MP3 (Google TTS)</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
